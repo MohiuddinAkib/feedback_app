@@ -1,0 +1,13 @@
+{% with messages=get_flashed_messages() %}
+    {% for message in messages %}
+        {# checking for the message type #}
+        {% if message is mapping %}
+            {% for key, value in message.items() %}
+                <p class="message">{{ key | safe }}: {{ value[0] | safe }}</p>
+            {% endfor %}
+        {% else %}
+            <p class="message">{{ message | safe }}</p>
+        {% endif %}
+    {% else %}
+    {% endfor %}
+{% endwith %}
