@@ -21,6 +21,7 @@ def submit():
                             data['rating'], data['comments'])
         db.session.add(feedback)
         db.session.commit()
+        feedback.send_email()
         flash('Your feedback was succesfully submitted')
         return redirect(url_for('main.success'))
     else:

@@ -14,3 +14,12 @@ class Feedback(db.Model):
         self.dealer = dealer
         self.rating = rating
         self.comments = comments
+
+    def send_email(self):
+        from feedback.send_mail import send_mail
+        send_mail(
+            self.customer,
+            self.dealer,
+            self.rating,
+            self.comments
+        )
